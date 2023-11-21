@@ -22,7 +22,10 @@ function App() {
     },
     {
       path: "/manage-products",
-      element: < ManageProducts/>
+      element: < ManageProducts/>,
+      loader: function(){
+        return fetch(`http://localhost:3000/all-vehicles`);
+      }
     },
     {
       path: "/add-product",

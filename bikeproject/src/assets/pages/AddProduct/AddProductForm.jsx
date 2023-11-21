@@ -1,30 +1,39 @@
+import {useNavigate} from "react-router-dom";
 function AddProductForm() {
-    function handlePostVehicle(event){
-        event.preventDefault();
-        //caputer form values
-        const make=event.target.make.value;
-        const model=event.target.model.value;
-        const image=event.target.image.value;
-        const rent=event.target.rent.value;
-        const description=event.target.description.value;
-        //create new obj with the form values
-        const vehicle={
-            make:make,
-            model:model,
-            image:image,
-            rent:rent,
-            description:description
+
+  const navigate = useNavigate();
+  function handlePostVehicle(event) {
+    event.preventDefault();
+    //caputer form values
+    const make = event.target.make.value;
+    const model = event.target.model.value;
+    const image = event.target.image.value;
+    const rent = event.target.rent.value;
+    const description = event.target.description.value;
+    //create new obj with the form values
+    const vehicle = {
+      make: make,
+      model: model,
+      image: image,
+      rent: rent,
+      description: description,
+    };
+    //now make a post req to the server for storing this obj
+    console.log(vehicle);
+    fetch(`http://localhost:3000/add-a-vehicle`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(vehicle),
+    })
+      .then((res) => res.json())
+      .then((data) =>{
+        if(data.acknowledged){
+          navigate('/manage-products');
         }
-        //now make a post req to the server for storing this obj
-        console.log(vehicle);
-        fetch(`http://localhost:3000/add-a-vehicle`,{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify(vehicle)
-        })
-    }
+      });
+  }
   return (
     <div>
       <div className="text-center mt-10">
@@ -33,7 +42,10 @@ function AddProductForm() {
           Fill Up the form to add a new vehicle
         </h2>
       </div>
-      <form onSubmit={handlePostVehicle} className="my-10 flex flex-col gap-y-5">
+      <form
+        onSubmit={handlePostVehicle}
+        className="my-10 flex flex-col gap-y-5"
+      >
         <input
           type="text"
           placeholder="Bike Company/make"
