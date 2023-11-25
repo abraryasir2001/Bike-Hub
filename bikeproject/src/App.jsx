@@ -14,7 +14,10 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/home",
-      element: <Home/>
+      element: <Home/>,
+      loader: function(){
+        return fetch(`http://localhost:3000/all-vehicles`);
+      },
     },
     {
       path: "/contact-us",
@@ -25,7 +28,7 @@ function App() {
       element: < ManageProducts/>,
       loader: function(){
         return fetch(`http://localhost:3000/all-vehicles`);
-      }
+      },
     },
     {
       path: "/add-product",
