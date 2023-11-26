@@ -49,7 +49,7 @@ async function run() {
       res.send(result);
     });
 
-    //APi for updating a single vehicle
+    //API for updating a single vehicle
     app.put("/update-by-id/:id", async (req, res) => {
       const id = req.params.id;
       const filter = { _id: new ObjectId(id) };
@@ -60,9 +60,21 @@ async function run() {
       //now call the updateOne method for updated the selected vehicle
 
       const result = await vehicleCollection.updateOne(filter, updates);
-     console.log(result);
+    
       res.send(result);
     });
+
+    //API for deleting a single vehicle
+    app.delete("/delete-by-id/:id",async(req,res)=>{
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+//now call the deleteOne method for deleted the selected vehicle
+
+    const result=await vehicleCollection.deleteOne(filter);
+    res.send(result);
+
+    })
+
   } finally {
   }
 }

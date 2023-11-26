@@ -2,9 +2,26 @@ import { Link, useLoaderData } from "react-router-dom";
 import { BiCommentDetail } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { RxUpdate } from "react-icons/rx";
+import React, { useState } from 'react';
 function ManageProductsTable() {
-  const vehicles = useLoaderData();
-  console.log(vehicles);
+  //get all the fetched data from loader
+  const data = useLoaderData();
+  const [vehicles, setVehicles] = useState(data);
+  //function for handle the delete of a single vehicle
+  function handleDeleteVehicle(vehicleId) {
+    fetch(`http://localhost:3000/delete-by-id/${vehicleId}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount == 1) {
+          const otherVehicle = vehicles?.filter(
+            (vehicle) => vehicle._id != vehicleId
+          );
+          setVehicles(otherVehicle);
+        }
+      });
+  }
   return (
     <div className="overflow-x-auto ">
       <table className="table w-full ">
@@ -34,6 +51,7 @@ function ManageProductsTable() {
                 <button
                   type="button"
                   class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                  onClick={() => handleDeleteVehicle(vehicle._id)}
                 >
                   <MdDelete size={15}></MdDelete>
                 </button>
