@@ -6,14 +6,14 @@ import Navbar from "../../../components/Shared/Navbar";
 function VehicleDetails() {
     const details=useLoaderData();
   return (
-    <div>
+    <div className="">
       <div className="max-w-6xl mx-auto">
         <Navbar></Navbar>
-        <div className="card lg:card-side bg-base-100 shadow-xl">
-          <figure>
+        <div className="my-10 card lg:card-side bg-base-100 shadow-2xl">
+          <figure className="md:w-1/2">
             <img src={details?.image} alt="Album" />
           </figure>
-          <div className="card-body">
+          <div className="card-body md:w-1/2">
             <h2 className="card-title">{details?.make}</h2>
             <h2 className="card-title">{details?.model}</h2>
             <p>{details?.description}</p>
