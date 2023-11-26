@@ -10,7 +10,7 @@ return (
     <div className="text-center mt-10">
       <p className="text-orange-500 font-bold">Add Teammate</p>
       <h2 className="text-2xl font-bold">
-        Fill Up the form to add a new Member
+        Fill Up the form to add a New Member
       </h2>
     </div>
     <PostTeamForm></PostTeamForm>

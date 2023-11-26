@@ -24,7 +24,7 @@ async function run() {
     const vehicleCollection = client
       .db("rental-service")
       .collection("vehicles");
-      
+
       const teamCollection = client
       .db("rental-service")
       .collection("team");
@@ -84,12 +84,16 @@ async function run() {
       const result=await teamCollection.insertOne(teammate);
       res.send(result);
     });
-
+//get all the teammates
+app.get("/all-teammates",async(req,res)=>{
+  const result=await teamCollection.find().toArray();
+  res.send(result);
+});
   } finally {
   }
 }
 run().catch(console.dir);
-app.use(cors());
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });

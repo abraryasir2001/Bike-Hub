@@ -31,8 +31,8 @@ function Navbar(){
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
-  </div>
+        <Link to="/team" className="btn">Explore Team</Link>
+    </div>
 </div>
    )
 }

@@ -9,6 +9,7 @@ import AddReview from "./assets/pages/AddReview/AddReview";
 import VehicleDetails from "./assets/pages/ProductDetails/VehicleDetails";
 import UpdateProduct from "./assets/pages/UpdateProduct/UpdateProduct";
 import PostTeam from "./assets/pages/PostTeam/PostTeam";
+import Team from "./assets/pages/Team/Team";
 
 
 function App() {
@@ -57,6 +58,13 @@ function App() {
     {
       path: "/add-teammate",
       element: <PostTeam />,
+    },
+    {
+      path: "/team",
+      element: <Team />,
+      loader: function(){
+        return fetch(`http://localhost:3000/all-teammates`);
+      }
     },
   ]);
 

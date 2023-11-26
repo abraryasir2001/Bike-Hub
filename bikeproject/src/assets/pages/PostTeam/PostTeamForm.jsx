@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-
 function PostTeamForm() {
   const navigate = useNavigate();
 
@@ -44,6 +43,7 @@ function PostTeamForm() {
         name="fullName"
         className="input input-bordered input-info w-full input-bordered"
       />
+      
 
       <input
         type="text"
@@ -74,7 +74,9 @@ function PostTeamForm() {
       <div className="flex justify-center">
         <input type="submit" className="btn btn-primary" />
       </div>
+      
     </form>
+    
   );
 }
 export default PostTeamForm;

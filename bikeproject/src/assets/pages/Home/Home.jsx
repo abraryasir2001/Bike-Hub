@@ -3,6 +3,7 @@ import Navbar from "../../../components/Shared/Navbar";
 import AboutUs from "./AboutUs";
 import HomeBanner from "./HomeBanner";
 import OurVehicles from "./OurVehicles";
+import Teammates from "./Teammates";
 
 function Home()
 {
@@ -13,6 +14,7 @@ function Home()
             <HomeBanner></HomeBanner>
             <OurVehicles></OurVehicles>
             <AboutUs></AboutUs>
+            <Teammates></Teammates>
         </div>
         <Footer></Footer>
         </div>
