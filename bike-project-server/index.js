@@ -44,9 +44,24 @@ async function run() {
     app.get("/vehicle/:id", async (req, res) => {
       const id = req.params.id;
       //Find a vehicle using the id passed as param
-       const result = await vehicleCollection.findOne({ _id: new ObjectId(id) })
-       
-       res.send(result);
+      const result = await vehicleCollection.findOne({ _id: new ObjectId(id) });
+
+      res.send(result);
+    });
+
+    //APi for updating a single vehicle
+    app.put("/update-by-id/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const updatedVehicle = req.body;
+
+      const updates = { $set: updatedVehicle };
+
+      //now call the updateOne method for updated the selected vehicle
+
+      const result = await vehicleCollection.updateOne(filter, updates);
+     console.log(result);
+      res.send(result);
     });
   } finally {
   }

@@ -7,6 +7,7 @@ import ManageProducts from "./assets/pages/ManageProducts/ManageProducts";
 import AddProduct from "./assets/pages/AddProduct/AddProduct";
 import AddReview from "./assets/pages/AddReview/AddReview";
 import VehicleDetails from "./assets/pages/ProductDetails/VehicleDetails";
+import UpdateProduct from "./assets/pages/UpdateProduct/UpdateProduct";
 
 
 function App() {
@@ -42,6 +43,13 @@ function App() {
       element: <VehicleDetails/>,
       loader: function ({params}) {
         return fetch(`http://localhost:3000/vehicle/${params.id}`)
+      },
+    },
+    {
+      path: "/update-vehicle/:id",
+      element: <UpdateProduct/>,
+      loader: function({params}){
+        return fetch(`http://localhost:3000/vehicle/${params.id}`);
       },
     },
   ]);
