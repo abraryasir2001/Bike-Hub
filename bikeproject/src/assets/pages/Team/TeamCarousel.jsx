@@ -6,7 +6,7 @@ function TeamCarousel() {
   const team = useLoaderData();
   return (
     <div>
-      <Carousel autoPlay>
+      <Carousel autoPlay infiniteLoop>
         {team?.map((singlePerson) => (
           <div
             key={singlePerson?._id}
