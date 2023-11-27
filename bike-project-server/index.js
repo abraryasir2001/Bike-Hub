@@ -134,6 +134,16 @@ app.get("/all-teammates",async(req,res)=>{
     
     
 
+    //API for delete a teammate
+    app.delete("/deleteteammate/:id",async(req,res)=>{
+        const id=req.params.id;
+        const filter={_id: new ObjectId(id)};
+
+        // now call the deleteOne method for delete the selected teammate
+
+        const result= await teamCollection.deleteOne(filter);
+        res.send(result);
+    })
 
 
 

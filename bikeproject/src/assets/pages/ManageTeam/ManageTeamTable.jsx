@@ -1,11 +1,27 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect } from "react";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdVerticalShadesClosed } from "react-icons/md";
 import { RxUpdate } from "react-icons/rx";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 function ManageTeamTable() {
-  const teammate = useLoaderData();
-  console.log(teammate);
+  //get all the fetched data from loader
+  const data = useLoaderData();
+  const [teammate, setTeammates] = useState(data);
+  //function for handle the celetion of a single vehicle
+  function handleDeleteTeammate(teammateId) {
+    fetch(`http://localhost:3000/deleteteammate/${teammateId}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          const otherTeammate = teammate?.filter(
+            (teammate) => teammate._id != teammateId
+          );
+          setTeammates(otherTeammate);
+        }
+      });
+  }
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -28,11 +44,11 @@ function ManageTeamTable() {
                 <button
                   type="button"
                   class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                  // onClick={() => handleDeleteVehicle(vehicle._id)}
+                  onClick={() => handleDeleteTeammate(teammate._id)}
                 >
                   <MdDelete size={15}></MdDelete>
                 </button>
-               
+
                 <Link to={`/update-teammate/${teammate?._id}`}>
                   <button
                     type="button"
