@@ -1,10 +1,11 @@
+import { Link, useLoaderData } from "react-router-dom";
 import { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { RxUpdate } from "react-icons/rx";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useState } from 'react';
 function ManageTeamTable() {
-  const teammates = useLoaderData();
-  console.log(teammates);
+  const teammate = useLoaderData();
+  console.log(teammate);
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -18,7 +19,7 @@ function ManageTeamTable() {
           </tr>
         </thead>
         <tbody>
-          {teammates?.map((teammate) => (
+          {teammate?.map((teammate) => (
             <tr key={teammate._id}>
               <td>{teammate.fullName}</td>
               <td>{teammate.position}</td>
@@ -31,8 +32,8 @@ function ManageTeamTable() {
                 >
                   <MdDelete size={15}></MdDelete>
                 </button>
-                {/* to={`/update-vehicle/${vehicle?._id}`} */}
-                <Link>
+               
+                <Link to={`/update-teammate/${teammate?._id}`}>
                   <button
                     type="button"
                     className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"

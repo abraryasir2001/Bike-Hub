@@ -89,6 +89,56 @@ app.get("/all-teammates",async(req,res)=>{
   const result=await teamCollection.find().toArray();
   res.send(result);
 });
+
+
+
+
+
+    //API for update a teammate
+    
+    app.get("/teammates/:id", async (req, res) => {
+      const id = req.params.id;
+      try {
+        const teammate = await teamCollection.findOne({ _id: new ObjectId(id) });
+        if (!teammate) {
+          return res.status(404).send({ error: "Teammate not found" });
+        }
+        res.send(teammate);
+      } catch (error) {
+        res.status(500).send({ error: "Internal server error" });
+      }
+    });
+
+    
+    
+    app.put("/teammates/:id", async (req, res) => {
+      const id = req.params.id;
+      const updatedTeammate = req.body;
+    
+      try {
+        const result = await teamCollection.updateOne(
+          { _id: new ObjectId(id) },
+          { $set: updatedTeammate }
+        );
+        
+        if (result.modifiedCount === 0) {
+          return res.status(404).send({ error: "Teammate not found" });
+        }
+    
+        res.send({ message: "Teammate updated successfully" });
+      } catch (error) {
+        res.status(500).send({ error: "Internal server error" });
+      }
+    });
+
+    
+    
+
+
+
+
+
+
   } finally {
   }
 }

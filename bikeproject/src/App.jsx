@@ -11,6 +11,7 @@ import UpdateProduct from "./assets/pages/UpdateProduct/UpdateProduct";
 import PostTeam from "./assets/pages/PostTeam/PostTeam";
 import Team from "./assets/pages/Team/Team";
 import ManageTeam from "./assets/pages/ManageTeam/ManageTeam";
+import UpdateTeam from "./assets/pages/UpdateTeam/UpdateTeam";
 
 
 
@@ -76,6 +77,22 @@ function App() {
         return fetch(`http://localhost:3000/all-teammates`);
       },
     },
+
+
+
+    {
+      path: "/update-teammate/:id",
+      element: <UpdateTeam/> ,
+      loader: function({params}){
+        return fetch(`http://localhost:3000/teammates/${params.id}`);
+      },
+    },
+
+
+
+
+
+
   ]);
 
   return <RouterProvider router={router}></RouterProvider>;
