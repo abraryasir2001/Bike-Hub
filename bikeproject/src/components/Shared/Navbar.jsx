@@ -10,6 +10,7 @@ function Navbar(){
       </li>
       <li><Link to ={'/add-product'}>Add Product</Link></li>
       <li><Link to ={'/add-teammate'}>Add Member</Link></li>
+      <li><Link to ={'/manage-teammate'}>Manage Team</Link></li>
         </>
     );
    return (

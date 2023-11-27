@@ -10,6 +10,8 @@ import VehicleDetails from "./assets/pages/ProductDetails/VehicleDetails";
 import UpdateProduct from "./assets/pages/UpdateProduct/UpdateProduct";
 import PostTeam from "./assets/pages/PostTeam/PostTeam";
 import Team from "./assets/pages/Team/Team";
+import ManageTeam from "./assets/pages/ManageTeam/ManageTeam";
+
 
 
 function App() {
@@ -65,6 +67,14 @@ function App() {
       loader: function(){
         return fetch(`http://localhost:3000/all-teammates`);
       }
+    },
+
+    {
+      path: "/manage-teammate",
+      element: <ManageTeam/>,
+      loader: function () {
+        return fetch(`http://localhost:3000/all-teammates`);
+      },
     },
   ]);
 
