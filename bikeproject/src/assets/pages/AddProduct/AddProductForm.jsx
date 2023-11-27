@@ -1,6 +1,5 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function AddProductForm() {
-
   const navigate = useNavigate();
   function handlePostVehicle(event) {
     event.preventDefault();
@@ -28,18 +27,18 @@ function AddProductForm() {
       body: JSON.stringify(vehicle),
     })
       .then((res) => res.json())
-      .then((data) =>{
-        if(data.acknowledged){
-          navigate('/manage-products');
+      .then((data) => {
+        if (data.acknowledged) {
+          navigate("/manage-products");
         }
       });
   }
   return (
     <div>
       <div className="text-center mt-10">
-        <p className="text-orange-500 font-bold">Add Vehicles</p>
+        <p className="text-blue-500 font-bold">Add Vehicles</p>
         <h2 className="text-2xl font-bold">
-          Fill Up the form to add a new vehicle
+          Add New Vehicle Here
         </h2>
       </div>
       <form
@@ -80,7 +79,12 @@ function AddProductForm() {
           placeholder="Bike Description"
         ></textarea>
         <div className="flex justify-center">
-          <input type="submit" className="btn btn-primary" />
+          <button
+            type="submit"
+            class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+          >
+            SUBMIT
+          </button>
         </div>
       </form>
     </div>

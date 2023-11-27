@@ -12,7 +12,7 @@ function Teammates() {
   return (
     <div className="my-10">
       <div className="text-center mt-10">
-        <p className="text-orange-500 font-bold">Meet Our Teams</p>
+        <p className="text-blue-500 font-bold">Meet Our Teams</p>
         <h2 className="text-2xl font-bold">Read what our team says</h2>
       </div>
 

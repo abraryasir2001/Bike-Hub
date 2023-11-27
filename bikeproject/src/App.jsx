@@ -5,7 +5,6 @@ import Home from "./assets/pages/Home/Home";
 import ContactUs from "./assets/pages/ContactUs/ContactUs";
 import ManageProducts from "./assets/pages/ManageProducts/ManageProducts";
 import AddProduct from "./assets/pages/AddProduct/AddProduct";
-import AddReview from "./assets/pages/AddReview/AddReview";
 import VehicleDetails from "./assets/pages/ProductDetails/VehicleDetails";
 import UpdateProduct from "./assets/pages/UpdateProduct/UpdateProduct";
 import PostTeam from "./assets/pages/PostTeam/PostTeam";
@@ -40,10 +39,7 @@ function App() {
       element: <AddProduct />,
     },
     
-    {
-      path: "/add-review",
-      element: <AddReview />,
-    },
+   
     {
       path: "/vehicle/:id",
       element: <VehicleDetails/>,
